@@ -101,6 +101,9 @@ class OTAUpdater:
 
     def _check_for_new_version(self):
         current_version = self.get_version(self.modulepath(self.main_dir))
+        #for debugging start
+        print(str(current_version))
+        #for debugging end
         latest_version = self.get_latest_version()
 
         print('Checking version... ')
@@ -122,6 +125,10 @@ class OTAUpdater:
         return '0.0'
 
     def get_latest_version(self):
+        #for debugging start
+        release_api_string = 'https://api.github.com/repos/{}/releases/latest'.format(self.github_repo)
+        print('release_api_string ' + release_api_string)
+        #for debugging end
         latest_release = self.http_client.get('https://api.github.com/repos/{}/releases/latest'.format(self.github_repo))
         version = latest_release.json()['tag_name']
         latest_release.close()
