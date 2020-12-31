@@ -15,7 +15,8 @@ def connectToWifiAndUpdate():
         while not sta_if.isconnected():
             pass
     print('network config:', sta_if.ifconfig())
-    otaUpdater = OTAUpdater('https://github.com/rdehuyss/micropython-ota-updater', main_dir='app', secrets_file="secrets.py")
+    token=secrets.TOKEN
+    otaUpdater = OTAUpdater('https://github.com/Rivtech/module_ota_github.git', main_dir='app', secrets_file="secrets.py", headers={'Authorization': 'token {}'.format(token)})
     hasUpdated = otaUpdater.install_update_if_available()
     if hasUpdated:
         machine.reset()
