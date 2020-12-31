@@ -15,7 +15,7 @@
 #######################################################################################
 
 
-import neopixel_demo, time
+import app.neopixel_demo as neopixel_demo, time
 RELEASE_TAG = '0.0'
 DEMO_FUNKTION = 'Weiss blinken in einer Loop'
 

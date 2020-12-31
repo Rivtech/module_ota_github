@@ -16,7 +16,7 @@ def connectToWifiAndUpdate():
             pass
     print('network config:', sta_if.ifconfig())
     token=secrets.TOKEN
-    otaUpdater = OTAUpdater('https://github.com/Rivtech/module_ota_github.git', main_dir='app', secrets_file="secrets.py", headers={'Authorization': 'token {}'.format(token)})
+    otaUpdater = OTAUpdater('https://github.com/Rivtech/module_ota_github', main_dir='app', secrets_file="secrets.py", headers={'Authorization': 'token {}'.format(token)})
     hasUpdated = otaUpdater.install_update_if_available()
     if hasUpdated:
         machine.reset()

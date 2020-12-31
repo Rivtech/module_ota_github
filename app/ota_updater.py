@@ -8,6 +8,9 @@ class OTAUpdater:
     """
 
     def __init__(self, github_repo, github_src_dir='', module='', main_dir='main', new_version_dir='next', secrets_file=None, headers={}):
+        #debug print start
+        print('headers: ' + str(headers))
+        #debug print end 
         self.http_client = HttpClient(headers=headers)
         self.github_repo = github_repo.rstrip('/').replace('https://github.com/', '')
         self.github_src_dir = '' if len(github_src_dir) < 1 else github_src_dir.rstrip('/') + '/'
@@ -101,9 +104,6 @@ class OTAUpdater:
 
     def _check_for_new_version(self):
         current_version = self.get_version(self.modulepath(self.main_dir))
-        #for debugging start
-        print(str(current_version))
-        #for debugging end
         latest_version = self.get_latest_version()
 
         print('Checking version... ')
@@ -125,10 +125,10 @@ class OTAUpdater:
         return '0.0'
 
     def get_latest_version(self):
-        #for debugging start
-        release_api_string = 'https://api.github.com/repos/{}/releases/latest'.format(self.github_repo)
-        print('release_api_string ' + release_api_string)
-        #for debugging end
+        #debug print start
+        latest_release_url = 'https://api.github.com/repos/{}/releases/latest'.format(self.github_repo)
+        print('latest_release_url: ' + str(latest_release_url))
+        #debug print end 
         latest_release = self.http_client.get('https://api.github.com/repos/{}/releases/latest'.format(self.github_repo))
         version = latest_release.json()['tag_name']
         latest_release.close()
