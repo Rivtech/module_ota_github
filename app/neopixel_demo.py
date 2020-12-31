@@ -86,7 +86,7 @@ class NeoDemo:
 
 def demo():
     led_pixel = NeoDemo()
-    led_pixel.white_intensity_sweep()
+    led_pixel.rainbow_sweep()
 
 
 if __name__ == "__main__":
