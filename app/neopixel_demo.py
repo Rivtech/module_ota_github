@@ -38,7 +38,7 @@ class NeoDemo:
             self.rgb_indicator.write()
             time.sleep_ms(25)
 
-    def rainbow_sweep(self):
+    def white_intensity_sweep(self):
         for i in range(255):
             col_val = i
             for j in range(self.led_number):
@@ -51,11 +51,42 @@ class NeoDemo:
                 self.rgb_indicator[j] = (col_val, col_val, col_val)
             self.rgb_indicator.write()
             time.sleep_ms(10)
-            
+
+
+    def rainbow_sweep(self):
+        red_val = 0
+        green_val = 0
+        blue_val = 0
+        sleep_time_ms = 10
+        # Sweep red to green
+        for i in range(255):
+            red_val = 255 - i
+            green_val = i
+            for j in range(self.led_number):
+                self.rgb_indicator[j] = (red_val, green_val, blue_val)
+            self.rgb_indicator.write()
+            time.sleep_ms(sleep_time_ms)
+        # Sweep green to blue
+        for i in range(255):
+            green_val = 255 - i
+            blue_val = i
+            for j in range(self.led_number):
+                self.rgb_indicator[j] = (red_val, green_val, blue_val)
+            self.rgb_indicator.write()
+            time.sleep_ms(sleep_time_ms)
+        # Sweep blue to red
+        for i in range(255):
+            blue_val = 255 - i
+            red_val = i
+            for j in range(self.led_number):
+                self.rgb_indicator[j] = (red_val, green_val, blue_val)
+            self.rgb_indicator.write()
+            time.sleep_ms(sleep_time_ms)
+
 
 def demo():
     led_pixel = NeoDemo()
-    led_pixel.rainbow_sweep()
+    led_pixel.white_intensity_sweep()
 
 
 if __name__ == "__main__":
