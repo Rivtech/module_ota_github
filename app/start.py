@@ -16,14 +16,12 @@
 
 
 import app.neopixel_demo as neopixel_demo, time
-RELEASE_TAG = '0.0'
-DEMO_FUNKTION = 'Weiss blinken in einer Loop'
+DEMO_FUNKTION = 'RGB Color Sweep'
 
 print('Executing Start.py')
 print('To check for updates, force an (hardware) machine.reset')
 
 while True:
-    print('Release Version: ' + RELEASE_TAG)
     print('LED Demo Funktion: ' + DEMO_FUNKTION)
     neopixel_demo.demo()
     time.sleep_ms(1000)
